@@ -1,0 +1,750 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KB Khalifah Sekolah Montessori</title>
+<meta name="description" content="Company profile KB Khalifah Sekolah Montessori — Sekolah Rasa Rumah.">
+
+<style>
+:root {
+  --bg: #090e0a;
+  --panel: #131b14;
+  --green: #b9e879;
+  --green-dark: #27432b;
+  --text: #f5f6ef;
+  --muted: #c0c9bb;
+  --line: #354831;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.75;
+}
+
+button, a { font: inherit; }
+a { color: var(--green); }
+
+header {
+  background: rgba(9,14,10,.96);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(14px);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 13px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 76px;
+  height: 76px;
+  padding: 5px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brand {
+  flex: 1;
+  text-align: center;
+}
+
+.brand h1 {
+  color: var(--green);
+  font-size: clamp(16px, 2vw, 25px);
+  line-height: 1.35;
+}
+
+.brand p {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+nav button {
+  cursor: pointer;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  transition: .2s;
+}
+
+nav button:hover,
+nav button.active {
+  background: var(--green);
+  color: #10180e;
+}
+
+main {
+  max-width: 1150px;
+  min-height: 65vh;
+  margin: auto;
+  padding: 35px 24px 65px;
+}
+
+.page { display: none; }
+
+.page.active {
+  display: block;
+  animation: enter .35s ease;
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+  min-height: 410px;
+  padding: clamp(28px, 6vw, 70px);
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 90% 10%, #658b3b38, transparent 40%),
+    linear-gradient(125deg, #243d26, #101711 75%);
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.eyebrow {
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.hero h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(36px, 5vw, 61px);
+  font-weight: normal;
+  line-height: 1.15;
+  margin: 15px 0;
+}
+
+.hero h2 span { color: var(--green); }
+
+.hero p {
+  color: var(--muted);
+  margin-bottom: 23px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--green);
+  color: #10180e;
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 18px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover { background: #d3f5a6; }
+
+.quote-card, .card {
+  background: linear-gradient(145deg, #19241a, #111711);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.quote-card .symbol {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.quote-card h3, .card h3 {
+  color: var(--green);
+  margin-bottom: 10px;
+}
+
+.quote-card blockquote {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: 22px;
+  margin-top: 22px;
+}
+
+.section-heading {
+  margin: 15px 0 25px;
+}
+
+.section-heading h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 4vw, 45px);
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 8px 0;
+}
+
+.section-heading p { color: var(--muted); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.card p, .card li { color: var(--muted); }
+.card ul { padding-left: 20px; }
+
+.card { margin-bottom: 0; }
+
+.identity {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 0 18px;
+}
+
+.identity dt, .identity dd {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+
+.identity dt { color: var(--green); font-weight: bold; }
+.identity dd { color: var(--muted); }
+
+.notice {
+  margin-top: 18px;
+  padding: 15px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.social-link {
+  display: block;
+  padding: 18px;
+  margin-bottom: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.social-link strong {
+  display: block;
+  color: var(--green);
+}
+
+.social-link span { color: var(--muted); font-size: 13px; }
+
+.gallery-placeholder {
+  min-height: 175px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #263b25, #121912);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--muted);
+}
+
+.gallery-placeholder span {
+  display: block;
+  font-size: 35px;
+  color: var(--green);
+}
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: #070a07;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+footer strong { color: var(--green); }
+
+@media (max-width: 750px) {
+  .header-inner { gap: 9px; padding: 10px; }
+  .logo { width: 58px; height: 58px; }
+  .brand p { letter-spacing: 0; font-size: 9px; }
+  nav { padding: 0 8px 12px; }
+  nav button { padding: 7px 9px; font-size: 12px; }
+  .hero, .grid { grid-template-columns: 1fr; }
+  .hero { padding: 28px 20px; }
+  .identity { grid-template-columns: 1fr; }
+  .identity dd { padding-top: 0; }
+  .identity dt { padding-bottom: 3px; border-bottom: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <img src="./logo-khalifah.jpeg" alt="Logo Khalifah Sekolah Montessori">
+    </div>
+
+    <div class="brand">
+      <h1>KB Khalifah Sekolah Montessori</h1>
+      <p>SEKOLAH RASA RUMAH</p>
+    </div>
+
+    <div class="logo">
+      <img src="./logo-yayasan.jpeg" alt="Logo Yayasan Samida Barokah Mulia">
+    </div>
+  </div>
+
+  <nav>
+    <button class="active" data-page="beranda">Beranda</button>
+    <button data-page="profil">Profil</button>
+    <button data-page="visi">Visi &amp; Misi</button>
+    <button data-page="tujuan">Tujuan</button>
+    <button data-page="identitas">Identitas</button>
+    <button data-page="organisasi">Organisasi</button>
+    <button data-page="galeri">Galeri</button>
+    <button data-page="kontak">Kontak</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- BERANDA -->
+<section class="page active" id="beranda">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Kindergarten School Profile</div>
+      <h2>Sekolah Rasa <span>Rumah.</span></h2>
+      <p>
+        Selamat datang dan selamat bergabung dengan keluarga besar
+        Khalifah Sekolah Montessori. Tempat anak mengenal dunia,
+        belajar, bereksplorasi, dan bertumbuh.
+      </p>
+      <button class="btn" onclick="showPage('profil')">
+        Kenali Sekolah Kami ↗
+      </button>
+    </div>
+
+    <div class="quote-card">
+      <div class="symbol">🌿</div>
+      <div class="eyebrow">Slogan sekolah</div>
+      <h3>Sekolah Rasa Rumah</h3>
+      <p>First Islamic Montessori School in Jonggol, Bogor.</p>
+      <blockquote>
+        “Tiada Bintang Jatuh dari Langit, Kecuali Meraihnya”
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="section-heading" style="margin-top:45px">
+    <div class="eyebrow">Selamat datang</div>
+    <h2>Pendidikan adalah perjalanan.</h2>
+    <p>
+      Pendidikan sejak usia dini menjadi bagian penting dalam
+      perkembangan anak. KSM mengusung pendekatan Montessori
+      yang didasari nilai keimanan.
+    </p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Belajar sambil bermain</h3>
+      <p>
+        KSM hadir sebagai pilihan pendidikan anak usia dini
+        dengan konsep bermain sambil belajar dan lingkungan
+        yang ramah anak.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Islamic Montessori</h3>
+      <p>
+        KSM mengusung Kurikulum Islamic Montessori, dengan harapan
+        anak tetap dekat dengan fitrahnya sebagai ciptaan Allah
+        Tuhan Yang Maha Esa.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- PROFIL -->
+<section class="page" id="profil">
+  <div class="section-heading">
+    <div class="eyebrow">Tentang kami</div>
+    <h2>Profil Sekolah</h2>
+    <p>Mengenal latar belakang dan filosofi Khalifah Sekolah Montessori.</p>
+  </div>
+
+  <article class="card" style="margin-bottom:17px">
+    <h3>“Sekolah Rasa Rumah”</h3>
+    <p>
+      PAUD Inklusi KSM didirikan sebagai jawaban dari keresahan
+      para orang tua yang menginginkan sekolah usia dini dengan
+      konsep bermain sambil belajar, sekolah ramah anak, dan
+      berfilosofi Montessori.
+    </p>
+  </article>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Metode Montessori</h3>
+      <p>
+        Metode Montessori dikenal sebagai pendekatan yang
+        mendukung kemampuan dasar anak melalui pengalaman
+        sensorik, fisik, dan motorik.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Kesempatan untuk anak</h3>
+      <p>
+        KSM ingin membuka kesempatan bagi anak-anak di wilayah
+        Kabupaten Bogor, khususnya Cileungsi, Jonggol, dan sekitarnya,
+        untuk mengenal metode Montessori.
+      </p>
+    </article>
+  </div>
+
+  <article class="card" style="margin-top:17px">
+    <h3>Sambutan Kepala Sekolah</h3>
+    <p>
+      Selamat datang di Sekolah Rasa Rumah, First Islamic
+      Montessori School in Jonggol, Bogor.
+    </p>
+    <p style="margin-top:14px">
+      <strong>Febrina Ayu Scottiati, S.H., Dipl. Montessori</strong><br>
+      Kepala Sekolah
+    </p>
+  </article>
+</section>
+
+<!-- VISI & MISI -->
+<section class="page" id="visi">
+  <div class="section-heading">
+    <div class="eyebrow">Filosofi pendidikan</div>
+    <h2>Visi &amp; Misi</h2>
+    <p>Landasan pendekatan pendidikan yang dijelaskan dalam profil KSM.</p>
+  </div>
+
+  <article class="card" style="margin-bottom:17px">
+    <h3>Landasan Pendidikan</h3>
+    <p>
+      Pendidikan harus dijalani mulai dari saat lahir hingga
+      liang lahat. Pendidikan akan menaikkan derajat kehidupan
+      manusia, dan pendidikan masa kecil menjadi penentu dalam
+      langkah selanjutnya.
+    </p>
+  </article>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Montessori</h3>
+      <p>
+        Memberi keleluasaan kepada anak untuk menjamah fenomena
+        serta aturan alam sebagai dasar kehidupan di masa mendatang.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Nilai Keimanan</h3>
+      <p>
+        Pendekatan Montessori yang didasari kaidah keimanan
+        memberikan landasan kuat bagi tumbuh kembang anak.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Sekolah Ramah Anak</h3>
+      <p>
+        Menyediakan konsep bermain sambil belajar dan lingkungan
+        pendidikan yang ramah anak.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Islamic Montessori</h3>
+      <p>
+        Mendukung anak agar dekat dengan fitrahnya sebagai
+        ciptaan Allah Tuhan Yang Maha Esa.
+      </p>
+    </article>
+  </div>
+
+  <div class="notice">
+    Catatan: dokumen company profile yang tersedia menjelaskan
+    filosofi dan pendekatan pendidikan, tetapi tidak memuat
+    rumusan formal berjudul “Visi” dan “Misi”. Isi halaman ini
+    mengikuti penjelasan yang tercantum dalam dokumen.
+  </div>
+</section>
+
+<!-- TUJUAN -->
+<section class="page" id="tujuan">
+  <div class="section-heading">
+    <div class="eyebrow">Arah pembelajaran</div>
+    <h2>Tujuan Pendidikan</h2>
+    <p>
+      Prinsip pendidikan yang dijelaskan dalam company profile KSM.
+    </p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Perkembangan Anak</h3>
+      <p>
+        Mendukung tumbuh kembang anak pada masa prasekolah,
+        yang merupakan masa penting dalam perkembangan seseorang.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Kemampuan Sensorik dan Motorik</h3>
+      <p>
+        Menggunakan pendekatan Montessori untuk menginisiasi
+        dan menggugah kemampuan dasar anak dalam menggunakan
+        sensor fisik dan motoriknya.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Eksplorasi</h3>
+      <p>
+        Memberi kesempatan kepada anak untuk mengenal fenomena
+        dan aturan alam sebagai dasar kehidupan di masa mendatang.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Pendidikan Berlandaskan Iman</h3>
+      <p>
+        Menghubungkan pendekatan Montessori dengan kaidah
+        keimanan dalam mendukung tumbuh kembang anak.
+      </p>
+    </article>
+  </div>
+
+  <div class="notice">
+    Isi di atas merupakan rangkuman prinsip yang dijelaskan
+    dalam company profile, bukan kutipan dari dokumen tujuan
+    pendidikan formal yang terpisah.
+  </div>
+</section>
+
+<!-- IDENTITAS -->
+<section class="page" id="identitas">
+  <div class="section-heading">
+    <div class="eyebrow">Informasi resmi</div>
+    <h2>Identitas Sekolah</h2>
+    <p>Data yang tercantum dalam company profile sekolah.</p>
+  </div>
+
+  <article class="card">
+    <dl class="identity">
+      <dt>Nama Sekolah</dt>
+      <dd>KB Khalifah Sekolah Montessori</dd>
+
+      <dt>NPSN</dt>
+      <dd>70048791</dd>
+
+      <dt>Alamat</dt>
+      <dd>
+        Bukit Bougenville AI 28/56, Citra Indah City,
+        Jalan Cileungsi–Jonggol KM 23,2, Singajaya,
+        Jonggol, Jawa Barat 16830
+      </dd>
+
+      <dt>Status Sekolah</dt>
+      <dd>Swasta</dd>
+
+      <dt>Tahun Berdiri</dt>
+      <dd>2019</dd>
+
+      <dt>Tahun Perizinan</dt>
+      <dd>2024</dd>
+
+      <dt>Izin Operasional</dt>
+      <dd>Dari Dinas Pendidikan</dd>
+    </dl>
+  </article>
+</section>
+
+<!-- ORGANISASI -->
+<section class="page" id="organisasi">
+  <div class="section-heading">
+    <div class="eyebrow">Pengelola sekolah</div>
+    <h2>Organisasi</h2>
+    <p>Nama dan jabatan yang disebutkan dalam company profile KSM.</p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <div class="eyebrow">Yayasan</div>
+      <h3 style="margin-top:10px">Prof. Ir. Samsul Kamal, MSc., Ph.D.</h3>
+      <p>Pembina Yayasan Samida Barokah Mulia.</p>
+    </article>
+
+    <article class="card">
+      <div class="eyebrow">Kepala Sekolah</div>
+      <h3 style="margin-top:10px">Febrina Ayu Scottiati, S.H., Dipl. Montessori</h3>
+      <p>Kepala Sekolah KB Khalifah Sekolah Montessori.</p>
+    </article>
+  </div>
+
+  <div class="notice">
+    Company profile yang tersedia belum memuat nama seluruh
+    pendidik dan tenaga kependidikan dalam teks yang dapat dibaca.
+    Karena itu, halaman ini hanya menampilkan nama dan jabatan
+    yang dapat dipastikan dari dokumen.
+  </div>
+</section>
+
+<!-- GALERI -->
+<section class="page" id="galeri">
+  <div class="section-heading">
+    <div class="eyebrow">Dokumentasi</div>
+    <h2>Galeri Sekolah</h2>
+    <p>Bagian Journal dan Magazine yang ditampilkan dalam company profile.</p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Journal</h3>
+      <p>
+        Bagian untuk menampilkan jurnal, dokumentasi pembelajaran,
+        atau publikasi sekolah.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Magazine</h3>
+      <p>
+        Bagian untuk menampilkan majalah dan publikasi sekolah.
+      </p>
+    </article>
+  </div>
+
+  <div class="notice">
+    File company profile yang tersedia menunjukkan judul Journal
+    dan Magazine, tetapi belum menyediakan rincian tautan publikasi
+    atau foto yang dapat ditampilkan sebagai galeri interaktif.
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section class="page" id="kontak">
+  <div class="section-heading">
+    <div class="eyebrow">Hubungi kami</div>
+    <h2>Kontak Sekolah</h2>
+    <p>Alamat dan akun media sosial yang dicantumkan dalam profil.</p>
+  </div>
+
+  <article class="card" style="margin-bottom:18px">
+    <h3>Alamat Sekolah</h3>
+    <p>
+      Bukit Bougenville AI 28/56, Citra Indah City,
+      Jalan Cileungsi–Jonggol KM 23,2, Singajaya,
+      Jonggol, Jawa Barat 16830
+    </p>
+    <p style="margin-top:15px">
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=Bukit+Bougenville+AI+28%2F56+Citra+Indah+City+Jonggol"
+        target="_blank"
+        rel="noopener noreferrer">
+        Cari alamat di Google Maps ↗
+      </a>
+    </p>
+  </article>
+
+  <a class="social-link"
+     href="https://www.instagram.com/khalifahsekolah_montessori/"
+     target="_blank" rel="noopener noreferrer">
+    <strong>Instagram Khalifah Sekolah Montessori ↗</strong>
+    <span>@khalifahsekolah_montessori</span>
+  </a>
+
+  <a class="social-link"
+     href="https://www.instagram.com/paud.khalifahmontessori/"
+     target="_blank" rel="noopener noreferrer">
+    <strong>Instagram PAUD ↗</strong>
+    <span>@paud.khalifahmontessori</span>
+  </a>
+
+  <div class="notice">
+    Nomor telepon dan alamat email tidak tercantum dalam teks
+    company profile yang tersedia, jadi tidak ditambahkan agar
+    informasi kontak tetap akurat.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>KB Khalifah Sekolah Montessori</strong>
+  <p>Sekolah Rasa Rumah</p>
+  <p>Yayasan Samida Barokah Mulia</p>
+  <p>© <span id="year"></span></p>
+</footer>
+
+<script>
+const buttons = document.querySelectorAll("nav button");
+const pages = document.querySelectorAll(".page");
+
+function showPage(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  pages.forEach(page => {
+    page.classList.toggle("active", page.id === id);
+  });
+
+  buttons.forEach(button => {
+    button.classList.toggle("active", button.dataset.page === id);
+  });
+
+  history.replaceState(null, "", "#" + id);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.page));
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const initialPage = location.hash.slice(1);
+if (initialPage && document.getElementById(initialPage)) {
+  showPage(initialPage);
+}
+</script>
+
+</body>
+</html>
