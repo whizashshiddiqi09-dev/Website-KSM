@@ -1,905 +1,1523 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f7faf5">
-<title>KB Khalifah Sekolah Montessori | Sekolah Rasa Rumah</title>
+<title>KB Khalifah Sekolah Montessori | KSM</title>
+<meta name="description" content="KB Khalifah Sekolah Montessori — Sekolah Rasa Rumah.">
+
 <style>
 :root {
-  --green: #176b46;
-  --dark: #153d30;
-  --light: #e7f2e8;
-  --cream: #f8faf5;
-  --white: #fff;
-  --muted: #62776b;
-  --border: #dce9dd;
+  --green: #245b43;
+  --dark: #173e2e;
+  --light: #e7f1df;
+  --bg: #f8faf5;
+  --text: #2d4034;
+  --muted: #697a6e;
+  --white: #ffffff;
+  --shadow: 0 10px 35px rgba(34, 78, 48, .09);
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: var(--dark);
-  background: var(--cream);
-  line-height: 1.7;
+  padding: 0;
 }
-button, a { font: inherit; }
-a { color: inherit; }
-button { cursor: pointer; }
-.site-header {
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+button, a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* DAUN MONSTERA DEKORATIF */
+
+.monstera {
+  position: fixed;
+  z-index: 0;
+  width: 220px;
+  height: 260px;
+  color: #719b70;
+  opacity: .22;
+  pointer-events: none;
+}
+
+.monstera-left {
+  left: -65px;
+  top: 100px;
+  transform: rotate(-24deg);
+}
+
+.monstera-right {
+  right: -65px;
+  top: 340px;
+  transform: rotate(155deg);
+}
+
+.monstera-bottom-left {
+  left: -75px;
+  bottom: -35px;
+  transform: rotate(18deg);
+  opacity: .16;
+}
+
+.monstera-bottom-right {
+  right: -75px;
+  bottom: -35px;
+  transform: rotate(190deg);
+  opacity: .16;
+}
+
+.monstera path {
+  fill: currentColor;
+}
+
+.monstera .cut {
+  fill: var(--bg);
+}
+
+.monstera-veins {
+  fill: none;
+  stroke: var(--bg);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+header, main, footer, .modal {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+/* NAVIGASI */
+
+header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,.94);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
+  z-index: 20;
+  background: rgba(255,255,255,.91);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #e4ebdf;
 }
-.nav-wrap {
-  max-width: 1250px;
-  min-height: 86px;
-  margin: auto;
-  padding: 12px 24px;
+
+.navbar {
+  min-height: 78px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
+
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  color: var(--green);
+  font-weight: 850;
+  line-height: 1.3;
   flex-shrink: 0;
 }
+
 .brand img {
-  width: 65px;
-  height: 58px;
+  width: 49px;
+  height: 49px;
   object-fit: contain;
 }
-.brand-divider {
-  height: 45px;
-  border-left: 1px solid var(--border);
+
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 500;
 }
-.brand-text {
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1.35;
-  color: var(--green);
-}
+
 .nav-links {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
   flex-wrap: wrap;
+  gap: 4px;
 }
+
 .nav-links button {
+  border: none;
+  border-radius: 12px;
   background: transparent;
-  border: 0;
-  border-radius: 24px;
-  padding: 9px 12px;
-  color: var(--dark);
-  font-size: 13px;
+  color: #43594a;
+  padding: 9px 11px;
+  font-size: 12px;
+  font-weight: 700;
   transition: .2s;
 }
+
 .nav-links button:hover,
 .nav-links button.active {
-  color: var(--green);
   background: var(--light);
+  color: var(--green);
 }
-.nav-links button.active { font-weight: 800; }
+
 .menu-toggle {
   display: none;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: white;
-  padding: 8px 12px;
-  color: var(--green);
-  font-size: 22px;
-}
-.cta, .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   border: 0;
-  text-decoration: none;
-  border-radius: 999px;
   background: var(--green);
   color: white;
-  padding: 12px 22px;
-  font-weight: 700;
-  font-size: 14px;
-  transition: .2s;
+  border-radius: 11px;
+  padding: 9px 13px;
 }
-.cta:hover, .btn:hover {
-  background: var(--dark);
-  transform: translateY(-2px);
-}
-.btn-outline {
-  background: white;
-  color: var(--green);
-  border: 1px solid var(--border);
-}
-.btn-outline:hover { color: white; }
-main { min-height: 65vh; }
+
+/* HALAMAN */
+
 .page {
   display: none;
-  animation: appear .35s ease;
+  min-height: 65vh;
+  animation: fadeIn .35s ease;
 }
-.page.active { display: block; }
-@keyframes appear {
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.container {
-  width: min(1120px, calc(100% - 40px));
-  margin: auto;
-}
+
+/* BERANDA */
+
 .hero {
-  position: relative;
+  padding: 65px 0;
+  background:
+    radial-gradient(ellipse at 0% 20%, #e5efdc 0%, transparent 40%),
+    radial-gradient(ellipse at 100% 90%, #e7f1e0 0%, transparent 40%),
+    #fff;
   overflow: hidden;
-  text-align: center;
-  padding: 92px 20px 70px;
-  background: linear-gradient(135deg, #f9fbf6, #eaf4e9);
 }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 45px;
+  position: relative;
+}
+
 .eyebrow {
   display: inline-block;
-  padding: 5px 15px;
-  border-radius: 30px;
-  background: #dfefe1;
+  background: #dcebd0;
   color: var(--green);
-  font-size: 12px;
-  letter-spacing: 1.5px;
+  padding: 5px 13px;
+  border-radius: 30px;
+  font-size: 11px;
   font-weight: 800;
-  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-h1, h2, h3, p { margin-top: 0; }
-h1 {
-  font-size: clamp(34px, 5vw, 57px);
-  line-height: 1.15;
+
+.hero h1 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 5vw, 60px);
+  line-height: 1.1;
   letter-spacing: -1.5px;
-  margin: 20px auto;
-  max-width: 850px;
+  margin: 20px 0;
 }
-h2 {
-  font-size: clamp(27px, 4vw, 38px);
-  line-height: 1.25;
-  letter-spacing: -.6px;
-}
-h3 { line-height: 1.35; }
+
 .hero p {
-  max-width: 720px;
-  margin: 0 auto 24px;
   color: var(--muted);
-  font-size: 17px;
+  max-width: 520px;
+  font-size: 15px;
 }
+
 .hero-actions {
   display: flex;
-  justify-content: center;
-  gap: 12px;
   flex-wrap: wrap;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 24px;
 }
-.leaf {
-  position: absolute;
-  width: clamp(115px, 19vw, 260px);
-  height: auto;
-  color: #6b9b70;
-  opacity: .19;
-  pointer-events: none;
-}
-.leaf-left { left: -55px; top: 15px; transform: rotate(-23deg); }
-.leaf-right { right: -50px; top: 20px; transform: rotate(22deg) scaleX(-1); }
-.leaf-bottom-left { left: -55px; bottom: -65px; transform: rotate(35deg); }
-.leaf-bottom-right { right: -50px; bottom: -55px; transform: rotate(-35deg) scaleX(-1); }
-.leaf svg { width: 100%; height: auto; }
-.section { padding: 76px 0; }
-.section-soft { background: #edf5ed; }
-.section-heading {
-  max-width: 700px;
-  text-align: center;
-  margin: 0 auto 38px;
-}
-.section-heading p { color: var(--muted); }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 22px;
-}
-.card {
-  background: white;
-  border: 1px solid #e8eee6;
-  border-radius: 22px;
-  padding: 26px;
-  box-shadow: 0 8px 26px rgba(35,80,47,.045);
-}
-.card h3 { color: var(--green); margin-bottom: 9px; }
-.card p { color: var(--muted); margin-bottom: 0; }
-.card-icon {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
-  background: var(--light);
-  color: var(--green);
-  font-size: 23px;
-  margin-bottom: 18px;
-}
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 42px;
+
+.btn {
+  display: inline-flex;
   align-items: center;
-}
-.panel {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 32px;
-}
-.panel p { color: var(--muted); }
-.check-list {
-  padding: 0;
-  margin: 20px 0 0;
-  list-style: none;
-}
-.check-list li {
-  padding: 10px 0 10px 30px;
-  position: relative;
-  border-bottom: 1px solid #edf1ec;
-}
-.check-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--green);
-  font-weight: 900;
-}
-.page-banner {
-  position: relative;
-  text-align: center;
-  padding: 76px 20px;
-  background: linear-gradient(130deg, #edf5e9, #f9fbf6);
-  overflow: hidden;
-}
-.page-banner h1 { font-size: clamp(32px, 4vw, 46px); }
-.page-banner p {
-  color: var(--muted);
-  max-width: 690px;
-  margin: auto;
-}
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 18px;
-}
-.info-row {
-  padding: 19px;
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  background: white;
-}
-.info-row small {
-  display: block;
-  color: var(--muted);
-  margin-bottom: 4px;
-}
-.info-row strong { overflow-wrap: anywhere; }
-.org-card { text-align: center; }
-.org-card .card-icon { margin-left: auto; margin-right: auto; }
-.program-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0,1fr));
-  gap: 16px;
-}
-.program-card {
-  background: white;
-  border: 1px solid #e2ebe1;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(35,80,47,.05);
-  display: flex;
-  flex-direction: column;
-}
-.program-top {
-  min-height: 135px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 20px 12px;
-  color: var(--green);
-  background: linear-gradient(145deg, #e8f3e7, #f7faf5);
-}
-.program-top .symbol { font-size: 35px; }
-.program-top h3 { margin: 8px 0 0; font-size: 17px; }
-.program-body {
-  padding: 19px 16px 22px;
-  text-align: center;
-  flex: 1;
-}
-.age {
-  display: inline-block;
-  padding: 4px 11px;
-  background: #e4f1e4;
-  color: var(--green);
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 800;
-}
-.program-body p {
-  color: var(--muted);
+  justify-content: center;
+  border-radius: 30px;
+  padding: 12px 19px;
+  border: 1px solid transparent;
   font-size: 13px;
-  margin: 13px 0 0;
+  font-weight: 750;
+  transition: .2s;
 }
-.register-panel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  margin-top: 44px;
-  border-radius: 24px;
-  padding: 30px;
-  background: #e8f3e8;
-}
-.register-panel h3 { margin-bottom: 7px; }
-.register-panel p { color: var(--muted); margin: 0; }
-.register-copy { max-width: 640px; }
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 18px;
-}
-.gallery-item {
-  min-height: 180px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  border-radius: 20px;
-  padding: 24px;
-  background: linear-gradient(145deg, #e6f1e5, #f9fbf6);
-  border: 1px solid var(--border);
-  color: var(--green);
-}
-.gallery-item span { display: block; font-size: 34px; }
-.gallery-item small { color: var(--muted); }
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-}
-.contact-card {
-  padding: 28px;
-  border-radius: 22px;
-  background: white;
-  border: 1px solid var(--border);
-}
-.contact-card p { color: var(--muted); overflow-wrap: anywhere; }
-.contact-card a { color: var(--green); }
-footer {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding: 45px 20px;
-  background: #173f30;
+
+.btn-primary {
+  background: var(--green);
   color: white;
 }
-footer p { color: #d4e5d7; margin: 7px 0; }
-footer .footer-note { font-size: 13px; opacity: .8; }
-.quote {
-  margin: 25px auto 0;
-  max-width: 800px;
+
+.btn-primary:hover {
+  background: var(--dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border-color: var(--green);
   color: var(--green);
+  background: white;
+}
+
+.btn-secondary:hover {
+  background: var(--light);
+}
+
+.hero-art {
+  position: relative;
+  min-height: 340px;
+  border-radius: 45% 40% 42% 35%;
+  background: linear-gradient(135deg, #e2edd9, #f7faf2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #e5eddf;
+}
+
+.hero-art::before {
+  content: "✿";
+  position: absolute;
+  font-size: 150px;
+  color: #a8c59c;
+  opacity: .2;
+  top: -50px;
+  right: -10px;
+}
+
+.hero-logo {
+  width: 135px;
+  height: 135px;
+  object-fit: contain;
+  padding: 10px;
+  background: white;
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-quote {
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-quote h2 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: 23px;
+}
+
+.hero-quote p {
+  font-size: 12px;
+}
+
+/* BAGIAN KONTEN */
+
+.content {
+  padding: 65px 0;
+}
+
+.heading {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 35px;
+}
+
+.heading h2 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: clamp(27px, 4vw, 38px);
+  line-height: 1.25;
+  margin: 12px 0;
+}
+
+.heading p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 25px;
+  background: rgba(255,255,255,.95);
+  border: 1px solid #e4ecdf;
+  border-radius: 21px;
+  box-shadow: var(--shadow);
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #bfd5b7;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  background: #edf4dd;
+  border-radius: 50%;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: var(--green);
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* PROGRAM UNGGULAN */
+
+.program-strip {
+  display: grid;
+  grid-template-columns: 1fr .8fr;
+  align-items: center;
+  gap: 25px;
+  margin-top: 28px;
+  padding: 30px;
+  border-radius: 25px;
+  background: linear-gradient(120deg, #dcebd4, #f1f5e9);
+  overflow: hidden;
+}
+
+.program-strip h2 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.program-strip p {
+  color: #607264;
+  font-size: 14px;
+}
+
+.quote-box {
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.7);
+  color: var(--green);
+  font-family: Georgia, serif;
   font-style: italic;
   text-align: center;
 }
-@media (max-width: 1050px) {
-  .nav-wrap { flex-wrap: wrap; }
-  .nav-links { order: 3; width: 100%; }
-  .program-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+
+/* JUDUL HALAMAN */
+
+.banner {
+  padding: 48px 5%;
+  text-align: center;
+  background: linear-gradient(120deg, #e2eed9, #fff);
 }
-@media (max-width: 700px) {
-  .nav-wrap { min-height: 72px; padding: 10px 16px; }
-  .brand img { width: 49px; height: 45px; }
-  .brand-divider { height: 35px; }
-  .brand-text { font-size: 10px; }
-  .menu-toggle { display: block; }
-  .nav-cta { display: none; }
+
+.banner h1 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 5vw, 45px);
+  margin: 10px 0;
+}
+
+.banner p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* KARTU INFORMASI */
+
+.panel {
+  background: white;
+  border: 1px solid #e3ebdf;
+  border-radius: 22px;
+  padding: clamp(22px, 4vw, 35px);
+  box-shadow: var(--shadow);
+}
+
+.panel h2,
+.panel h3 {
+  color: var(--green);
+  margin-bottom: 13px;
+}
+
+.panel p,
+.panel li {
+  color: #5c6e61;
+  font-size: 14px;
+  margin-bottom: 13px;
+}
+
+.panel ul {
+  padding-left: 20px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 155px 1fr;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid #e9eee5;
+  font-size: 14px;
+}
+
+.info strong {
+  color: var(--green);
+}
+
+.logo-pair {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.logo-pair img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  padding: 8px;
+  border: 1px solid #e5ece0;
+  border-radius: 15px;
+}
+
+/* LAYANAN */
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.program {
+  width: 100%;
+  text-align: left;
+  background: rgba(255,255,255,.97);
+  border: 1px solid #e0eadd;
+  border-radius: 23px;
+  padding: 25px;
+  min-height: 225px;
+  box-shadow: var(--shadow);
+  transition: .25s;
+}
+
+.program:hover {
+  transform: translateY(-5px);
+  border-color: #9cbd91;
+}
+
+.program h3 {
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.program p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.more {
+  display: block;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 15px;
+}
+
+/* MODAL DETAIL PROGRAM */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(15, 39, 25, .72);
+  backdrop-filter: blur(7px);
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-content {
+  width: min(720px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 26px;
+  padding: clamp(25px, 5vw, 42px);
+  position: relative;
+  animation: fadeIn .25s ease;
+}
+
+.modal-content h2 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: 32px;
+  line-height: 1.25;
+  padding-right: 30px;
+  margin: 15px 0;
+}
+
+.modal-content h3 {
+  color: var(--green);
+  margin: 18px 0 10px;
+}
+
+.modal-content p,
+.modal-content li {
+  color: #586b5d;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.modal-content ul {
+  padding-left: 22px;
+}
+
+.close {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--light);
+  color: var(--green);
+  font-size: 25px;
+}
+
+/* KONTAK */
+
+.contact-link {
+  color: var(--green);
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 38px 0 18px;
+  overflow: hidden;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 30px;
+}
+
+footer h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+footer p,
+footer a {
+  color: #d8e5d9;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+footer a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid #ffffff30;
+  margin-top: 25px;
+  padding-top: 15px;
+  text-align: center;
+  color: #c6d8c9;
+  font-size: 11px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
   .nav-links {
     display: none;
-    flex-direction: column;
-    align-items: stretch;
     width: 100%;
-    padding: 8px 0 12px;
   }
-  .nav-links.open { display: flex; }
-  .nav-links button { width: 100%; text-align: left; padding: 12px 14px; }
-  .hero { padding: 70px 18px 55px; }
-  .hero p { font-size: 15px; }
-  .container { width: min(100% - 30px, 1120px); }
-  .section { padding: 54px 0; }
-  .grid, .split, .info-grid, .gallery-grid, .contact-grid {
+
+  .nav-links.open {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .nav-links button {
+    background: #f0f5eb;
+  }
+
+  .hero-grid {
     grid-template-columns: 1fr;
   }
-  .program-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
-  .program-top { min-height: 115px; }
-  .program-body { padding: 16px 11px; }
-  .program-top h3 { font-size: 15px; }
-  .register-panel { flex-direction: column; align-items: flex-start; padding: 23px; }
-  .page-banner { padding: 58px 18px; }
-  .card, .panel { padding: 23px; }
-  .leaf { opacity: .12; width: 150px; }
+
+  .hero-art {
+    min-height: 270px;
+  }
+
+  .cards,
+  .program-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .monstera {
+    width: 155px;
+    opacity: .15;
+  }
 }
-@media (max-width: 380px) {
-  .program-grid { grid-template-columns: 1fr; }
+
+@media (max-width: 560px) {
+  .container {
+    width: 91%;
+  }
+
+  .brand {
+    font-size: 12px;
+  }
+
+  .brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .nav-links.open {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero {
+    padding: 45px 0;
+  }
+
+  .hero h1 {
+    font-size: 39px;
+  }
+
+  .hero-art {
+    min-height: 245px;
+  }
+
+  .content {
+    padding: 45px 0;
+  }
+
+  .cards,
+  .program-grid,
+  .grid2,
+  .footer-grid,
+  .program-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .program {
+    padding: 22px;
+  }
+
+  .info {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .modal {
+    padding: 8px;
+    align-items: flex-end;
+  }
+
+  .modal-content {
+    max-height: 92vh;
+    border-radius: 24px 24px 12px 12px;
+    padding: 27px 22px;
+  }
+
+  .modal-content h2 {
+    font-size: 27px;
+  }
+
+  .monstera {
+    width: 110px;
+    opacity: .12;
+  }
+
+  .monstera-left {
+    left: -45px;
+    top: 150px;
+  }
+
+  .monstera-right {
+    right: -45px;
+    top: 430px;
+  }
+
+  .monstera-bottom-left {
+    left: -50px;
+  }
+
+  .monstera-bottom-right {
+    right: -50px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }
 </style>
 </head>
+
 <body>
 
-<!-- Dekorasi daun monstera transparan -->
-<template id="monstera-template">
-  <svg viewBox="0 0 200 240" aria-hidden="true">
-    <path fill="currentColor" d="M99 228 C83 183 29 153 22 102 C15 53 49 13 103 9 C151 5 184 40 177 82 C172 110 151 126 134 145 C118 164 111 192 99 228 Z"/>
-    <path fill="#f8faf5" d="M98 210 L97 31 L104 31 L104 218 Z"/>
-    <path fill="#f8faf5" d="M100 75 L70 44 Q65 41 63 48 Q61 54 69 60 L100 88 Z"/>
-    <path fill="#f8faf5" d="M102 103 L142 62 Q148 58 150 65 Q151 71 144 77 L102 119 Z"/>
-    <path fill="#f8faf5" d="M101 137 L57 101 Q51 98 50 105 Q49 112 57 117 L101 153 Z"/>
-    <path fill="#f8faf5" d="M101 167 L145 126 Q151 123 153 130 Q154 137 146 143 L101 183 Z"/>
-    <path fill="#f8faf5" d="M83 48 Q73 28 63 31 Q53 35 68 52 Z"/>
-    <path fill="#f8faf5" d="M119 47 Q133 26 143 32 Q151 37 133 53 Z"/>
-    <path fill="#f8faf5" d="M64 78 Q46 65 42 76 Q39 86 63 92 Z"/>
-    <path fill="#f8faf5" d="M137 91 Q159 77 163 87 Q165 97 138 105 Z"/>
-    <path fill="#f8faf5" d="M75 121 Q56 110 53 121 Q52 130 78 135 Z"/>
-    <path fill="#f8faf5" d="M126 147 Q149 136 151 146 Q151 157 126 161 Z"/>
-  </svg>
-</template>
+<!-- MONSTERA KIRI ATAS -->
+<svg class="monstera monstera-left" viewBox="0 0 200 240" aria-hidden="true">
+  <path d="M100 225 C62 193 18 156 15 100 C12 57 38 32 67 45 C79 12 115 12 128 43 C159 25 188 49 183 83 C205 112 177 162 100 225 Z"/>
+  <path class="cut" d="M48 66 C33 57 28 81 39 91 C49 101 59 91 57 81 Z"/>
+  <path class="cut" d="M82 49 C68 40 61 60 72 71 C81 80 91 68 88 59 Z"/>
+  <path class="cut" d="M123 51 C110 42 101 60 113 71 C124 81 132 66 129 59 Z"/>
+  <path class="cut" d="M158 73 C145 64 136 82 147 93 C157 102 166 88 162 81 Z"/>
+  <path class="cut" d="M61 116 C43 104 36 129 51 142 C63 151 72 134 67 126 Z"/>
+  <path class="cut" d="M113 105 C98 95 89 115 102 126 C113 137 122 121 118 113 Z"/>
+  <path class="cut" d="M151 125 C138 115 129 134 141 145 C152 155 160 141 157 133 Z"/>
+  <path class="monstera-veins" d="M100 225 L90 45 M96 173 L43 112 M94 145 L151 92 M91 109 L66 68 M99 196 L148 153"/>
+</svg>
 
-<header class="site-header">
-  <div class="nav-wrap">
-    <div class="brand">
-      <img src="./logo-khalifah.jpeg" alt="Logo Khalifah Sekolah Montessori">
-      <span class="brand-divider"></span>
-      <img src="./logo-yayasan.jpeg" alt="Logo Yayasan Samida Barokah Mulia">
-      <span class="brand-text">KHALIFAH<br>SEKOLAH MONTESSORI</span>
-    </div>
+<!-- MONSTERA KANAN -->
+<svg class="monstera monstera-right" viewBox="0 0 200 240" aria-hidden="true">
+  <path d="M100 225 C62 193 18 156 15 100 C12 57 38 32 67 45 C79 12 115 12 128 43 C159 25 188 49 183 83 C205 112 177 162 100 225 Z"/>
+  <path class="cut" d="M48 66 C33 57 28 81 39 91 C49 101 59 91 57 81 Z"/>
+  <path class="cut" d="M82 49 C68 40 61 60 72 71 C81 80 91 68 88 59 Z"/>
+  <path class="cut" d="M123 51 C110 42 101 60 113 71 C124 81 132 66 129 59 Z"/>
+  <path class="cut" d="M158 73 C145 64 136 82 147 93 C157 102 166 88 162 81 Z"/>
+  <path class="cut" d="M61 116 C43 104 36 129 51 142 C63 151 72 134 67 126 Z"/>
+  <path class="cut" d="M113 105 C98 95 89 115 102 126 C113 137 122 121 118 113 Z"/>
+  <path class="cut" d="M151 125 C138 115 129 134 141 145 C152 155 160 141 157 133 Z"/>
+  <path class="monstera-veins" d="M100 225 L90 45 M96 173 L43 112 M94 145 L151 92 M91 109 L66 68 M99 196 L148 153"/>
+</svg>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+<!-- MONSTERA BAGIAN BAWAH -->
+<svg class="monstera monstera-bottom-left" viewBox="0 0 200 240" aria-hidden="true">
+  <path d="M100 225 C62 193 18 156 15 100 C12 57 38 32 67 45 C79 12 115 12 128 43 C159 25 188 49 183 83 C205 112 177 162 100 225 Z"/>
+  <path class="cut" d="M48 66 C33 57 28 81 39 91 C49 101 59 91 57 81 Z"/>
+  <path class="cut" d="M82 49 C68 40 61 60 72 71 C81 80 91 68 88 59 Z"/>
+  <path class="cut" d="M123 51 C110 42 101 60 113 71 C124 81 132 66 129 59 Z"/>
+  <path class="cut" d="M61 116 C43 104 36 129 51 142 C63 151 72 134 67 126 Z"/>
+  <path class="monstera-veins" d="M100 225 L90 45 M96 173 L43 112 M94 145 L151 92 M91 109 L66 68"/>
+</svg>
 
-    <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+<svg class="monstera monstera-bottom-right" viewBox="0 0 200 240" aria-hidden="true">
+  <path d="M100 225 C62 193 18 156 15 100 C12 57 38 32 67 45 C79 12 115 12 128 43 C159 25 188 49 183 83 C205 112 177 162 100 225 Z"/>
+  <path class="cut" d="M48 66 C33 57 28 81 39 91 C49 101 59 91 57 81 Z"/>
+  <path class="cut" d="M82 49 C68 40 61 60 72 71 C81 80 91 68 88 59 Z"/>
+  <path class="cut" d="M123 51 C110 42 101 60 113 71 C124 81 132 66 129 59 Z"/>
+  <path class="cut" d="M61 116 C43 104 36 129 51 142 C63 151 72 134 67 126 Z"/>
+  <path class="monstera-veins" d="M100 225 L90 45 M96 173 L43 112 M94 145 L151 92 M91 109 L66 68"/>
+</svg>
+
+<header>
+  <div class="container navbar">
+    <a href="#" class="brand" onclick="showPage('beranda'); return false;">
+      <img src="./logo-khalifah.jpeg" alt="Logo KSM">
+      <div>
+        KB KHALIFAH
+        <br>SEKOLAH MONTESSORI
+        <small>Sekolah Rasa Rumah</small>
+      </div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false">
+      ☰ Menu
+    </button>
+
+    <nav class="nav-links" id="navLinks">
       <button class="active" data-page="beranda">Beranda</button>
       <button data-page="profil">Profil</button>
       <button data-page="visi">Visi &amp; Misi</button>
-      <button data-page="tujuan">Tujuan</button>
       <button data-page="identitas">Identitas</button>
       <button data-page="organisasi">Organisasi</button>
       <button data-page="galeri">Galeri</button>
       <button data-page="layanan">Layanan</button>
-      <button data-page="kontak">Kontak</button>
+      <button data-page="kontak">Kontak &amp; Biaya</button>
     </nav>
-
-    <button class="cta nav-cta" data-goto="layanan">✿ Program &amp; Pendaftaran</button>
   </div>
 </header>
 
 <main>
+
 <!-- BERANDA -->
-<section class="page active" id="beranda">
-  <div class="hero">
-    <div class="leaf leaf-left"><template></template></div>
-    <div class="leaf leaf-right"><template></template></div>
-    <div class="container">
-      <span class="eyebrow">Sekolah Rasa Rumah</span>
-      <h1>KB Khalifah<br><span style="color:var(--green)">Sekolah Montessori</span></h1>
-      <p>Lingkungan belajar ramah anak dengan pendekatan Montessori yang mendukung anak bereksplorasi, belajar, dan tumbuh sejak usia dini.</p>
-      <div class="hero-actions">
-        <button class="btn" data-goto="profil">Kenali Sekolah Kami</button>
-        <button class="btn btn-outline" data-goto="layanan">Lihat Program ✿</button>
-      </div>
-    </div>
-    <div class="leaf leaf-bottom-left"><template></template></div>
-    <div class="leaf leaf-bottom-right"><template></template></div>
-  </div>
-
-  <div class="section">
-    <div class="container">
-      <div class="section-heading">
-        <span class="eyebrow">Tentang Kami</span>
-        <h2>Belajar dengan Hati, Tumbuh dengan Bahagia</h2>
-        <p>PAUD Inklusi KSM hadir untuk mendampingi perjalanan belajar anak melalui kegiatan bermain dan pendekatan Montessori yang ramah anak.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="card-icon">🌱</div>
-          <h3>Belajar melalui Eksplorasi</h3>
-          <p>Anak didorong mengenal lingkungan dan fenomena di sekitarnya melalui pengalaman belajar.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">👐</div>
-          <h3>Pengalaman Sensoris</h3>
-          <p>Pendekatan Montessori mendukung perkembangan sensoris, fisik, dan motorik anak.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">☪</div>
-          <h3>Nilai Islami</h3>
-          <p>Pendidikan Islami Montessori dengan harapan anak tetap dekat dengan fitrahnya sebagai ciptaan Allah.</p>
-        </article>
-      </div>
-    </div>
-  </div>
-
-  <div class="section section-soft">
-    <div class="container split">
+<div class="page active" id="beranda">
+  <section class="hero">
+    <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Mari Mengenal KSM</span>
-        <h2>Tempat Anak Memulai Perjalanan Belajarnya</h2>
-        <p>KB Khalifah Sekolah Montessori melayani kebutuhan pendidikan anak usia dini di kawasan Cileungsi, Jonggol, dan sekitarnya.</p>
-        <button class="btn" data-goto="profil">Baca Profil Sekolah</button>
+        <span class="eyebrow">PENDIDIKAN ANAK USIA DINI</span>
+        <h1>Belajar dengan nyaman, tumbuh dengan bahagia.</h1>
+        <p>
+          Selamat datang di KB Khalifah Sekolah Montessori.
+          Sekolah Rasa Rumah, dengan pembelajaran berbasis bermain,
+          eksplorasi, dan filosofi Montessori.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="showPage('profil')">
+            Kenali Sekolah Kami →
+          </button>
+          <button class="btn btn-secondary" onclick="showPage('layanan')">
+            Lihat Layanan
+          </button>
+        </div>
       </div>
-      <div class="panel">
-        <h3>Program Pendidikan</h3>
-        <p>Kenali pilihan program yang tersedia untuk calon peserta didik.</p>
-        <ul class="check-list">
-          <li>Kelas Sensori usia 2–3 tahun</li>
-          <li>Kelas Kelompok Bermain usia 3–4 tahun</li>
-          <li>Kelas Kelompok A usia 4–5 tahun</li>
-          <li>Kelas Kelompok B usia 5–6 tahun</li>
-          <li>Kelas Elementary (SD)</li>
-        </ul>
-        <button class="btn" data-goto="layanan" style="margin-top:22px">Lihat Semua Program</button>
+
+      <div class="hero-art">
+        <img class="hero-logo" src="./logo-khalifah.jpeg" alt="Logo sekolah">
+        <div class="hero-quote">
+          <h2>Sekolah Rasa Rumah</h2>
+          <p>Belajar · Bermain · Bertumbuh</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="content">
+    <div class="container">
+      <div class="heading">
+        <span class="eyebrow">TENTANG KSM</span>
+        <h2>Setiap Anak Punya Cara untuk Berkembang</h2>
+        <p>
+          Kami berupaya menghadirkan pengalaman belajar yang ramah anak,
+          menyenangkan, dan menghargai proses tumbuh kembangnya.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icon">🌿</div>
+          <h3>Belajar Sambil Bermain</h3>
+          <p>Anak mengenal lingkungan melalui pengalaman yang bermakna.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🧩</div>
+          <h3>Filosofi Montessori</h3>
+          <p>Mendukung anak untuk mencoba, mengeksplorasi, dan belajar.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">💚</div>
+          <h3>Nilai-Nilai Islami</h3>
+          <p>Mendukung kedekatan anak dengan fitrahnya sebagai ciptaan Allah.</p>
+        </article>
+      </div>
+
+      <div class="program-strip">
+        <div>
+          <span class="eyebrow">PROGRAM KSM</span>
+          <h2>Temukan Program Belajar</h2>
+          <p>
+            Kenali program Sensori, KB, Kelompok A, Kelompok B,
+            dan Elementary. Tekan setiap kartu untuk membaca detailnya.
+          </p>
+          <button class="btn btn-primary" onclick="showPage('layanan')">
+            Jelajahi Program →
+          </button>
+        </div>
+
+        <div class="quote-box">
+          <span style="font-size:28px">🌱</span>
+          <p style="font-size:20px">
+            "Tiada Bintang Jatuh dari Langit, Kecuali Meraihnya"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <!-- PROFIL -->
-<section class="page" id="profil">
-  <div class="page-banner">
-    <div class="leaf leaf-left"><template></template></div>
-    <span class="eyebrow">Tentang Sekolah</span>
-    <h1>Profil KB Khalifah Sekolah Montessori</h1>
-    <p>Sekolah Rasa Rumah, tempat anak belajar dan mengeksplorasi lingkungan dengan pendekatan Montessori.</p>
+<div class="page" id="profil">
+  <div class="banner">
+    <span class="eyebrow">MENGENAL KSM</span>
+    <h1>Profil Sekolah</h1>
+    <p>KB Khalifah Sekolah Montessori — Sekolah Rasa Rumah.</p>
   </div>
-  <div class="section">
-    <div class="container split">
-      <div>
-        <h2>Mengenal KSM</h2>
-        <p>PAUD Inklusi KSM didirikan untuk menjawab kebutuhan orang tua akan pendidikan anak usia dini melalui pembelajaran berbasis bermain dan lingkungan sekolah yang ramah anak.</p>
-        <p>Pendekatan Montessori mendorong anak untuk mengeksplorasi alam serta berbagai fenomena di sekitarnya. Pembelajaran juga mendukung perkembangan sensoris, fisik, dan motorik anak.</p>
-        <p>Melalui pendekatan Islami Montessori, KSM berharap anak-anak tetap dekat dengan fitrahnya sebagai ciptaan Allah.</p>
-      </div>
+
+  <section class="content">
+    <div class="container grid2">
       <div class="panel">
-        <div class="card-icon">🌿</div>
-        <h3>Sekolah Rasa Rumah</h3>
-        <p>Pendidikan anak usia dini yang mengutamakan kegiatan bermain, eksplorasi, dan lingkungan belajar yang ramah anak.</p>
-        <button class="btn" data-goto="layanan">Kenali Program</button>
+        <h2>Siapa Kami?</h2>
+        <p>
+          PAUD Inklusi KSM hadir untuk memenuhi kebutuhan orang tua
+          terhadap pendidikan anak usia dini melalui pembelajaran
+          berbasis bermain, lingkungan ramah anak, dan filosofi Montessori.
+        </p>
+        <p>
+          Montessori memberi kesempatan kepada anak untuk mengeksplorasi
+          alam dan fenomena di sekitarnya, sekaligus mendukung perkembangan
+          sensorik, fisik, dan motorik.
+        </p>
+        <p>
+          Islamic Montessori berharap anak tetap dekat dengan fitrahnya
+          sebagai ciptaan Allah.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h2>Identitas Visual</h2>
+        <div class="logo-pair">
+          <img src="./logo-khalifah.jpeg" alt="Logo KSM">
+          <img src="./logo-yayasan.jpeg" alt="Logo Yayasan">
+        </div>
+        <h3>Wilayah Layanan</h3>
+        <p>
+          Kabupaten Bogor, terutama Cileungsi, Jonggol, dan wilayah sekitarnya.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- VISI MISI -->
-<section class="page" id="visi">
-  <div class="page-banner">
-    <span class="eyebrow">Arah Pendidikan</span>
+<!-- VISI DAN MISI -->
+<div class="page" id="visi">
+  <div class="banner">
+    <span class="eyebrow">ARAH PENDIDIKAN</span>
     <h1>Visi &amp; Misi</h1>
-    <p>Informasi visi dan misi resmi sekolah dapat ditampilkan pada halaman ini.</p>
+    <p>Nilai yang menjadi panduan dalam mendampingi anak.</p>
   </div>
-  <div class="section">
-    <div class="container split">
-      <div class="panel">
-        <div class="card-icon">🌱</div>
-        <h2>Visi Sekolah</h2>
-        <p><strong>Tambahkan teks visi resmi KB Khalifah Sekolah Montessori di sini.</strong></p>
-        <p>Gunakan kalimat persis dari dokumen profil resmi sekolah agar informasinya akurat.</p>
-      </div>
-      <div class="panel">
-        <div class="card-icon">🧭</div>
-        <h2>Misi Sekolah</h2>
-        <p><strong>Tambahkan butir-butir misi resmi KB Khalifah Sekolah Montessori di sini.</strong></p>
-        <p>Bagian ini sengaja disiapkan agar dapat diisi dengan teks resmi sekolah.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- TUJUAN -->
-<section class="page" id="tujuan">
-  <div class="page-banner">
-    <span class="eyebrow">Pendidikan</span>
-    <h1>Tujuan Pendidikan</h1>
-    <p>Pendekatan Montessori mendukung anak belajar melalui eksplorasi dan pengalaman.</p>
-  </div>
-  <div class="section">
-    <div class="container">
-      <div class="grid">
-        <article class="card">
-          <div class="card-icon">👐</div>
-          <h3>Eksplorasi Sensoris</h3>
-          <p>Mendukung perkembangan sensoris anak melalui pengalaman belajar.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🌳</div>
-          <h3>Mengenal Lingkungan</h3>
-          <p>Mendorong anak mengeksplorasi alam dan fenomena di sekitarnya.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🌱</div>
-          <h3>Perkembangan Anak</h3>
-          <p>Mendukung perkembangan fisik dan motorik melalui kegiatan yang sesuai.</p>
-        </article>
+  <section class="content">
+    <div class="container grid2">
+      <div class="panel">
+        <div class="icon">🌟</div>
+        <h2>Visi</h2>
+        <p>
+          Menjadi ruang pendidikan anak usia dini yang ramah anak,
+          mendukung tumbuh kembang melalui bermain dan eksplorasi,
+          serta menjaga kedekatan anak dengan fitrahnya.
+        </p>
+        <small>Catatan: rumusan ini merupakan ringkasan, bukan kutipan visi resmi.</small>
       </div>
-      <p class="quote">Catatan: silakan sesuaikan halaman ini dengan rumusan tujuan resmi yang digunakan sekolah.</p>
+
+      <div class="panel">
+        <div class="icon">🌱</div>
+        <h2>Misi</h2>
+        <ul>
+          <li>Menyediakan pengalaman belajar berbasis bermain.</li>
+          <li>Mendorong eksplorasi alam dan fenomena di sekitar anak.</li>
+          <li>Mendukung perkembangan sensorik, fisik, dan motorik.</li>
+          <li>Menghadirkan lingkungan belajar yang ramah anak dan bernilai Islami.</li>
+        </ul>
+        <small>Poin di atas merupakan ringkasan pendekatan sekolah.</small>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <!-- IDENTITAS -->
-<section class="page" id="identitas">
-  <div class="page-banner">
-    <span class="eyebrow">Data Sekolah</span>
-    <h1>Identitas Sekolah</h1>
-    <p>Informasi umum KB Khalifah Sekolah Montessori.</p>
+<div class="page" id="identitas">
+  <div class="banner">
+    <span class="eyebrow">INFORMASI SEKOLAH</span>
+    <h1>Identitas KSM</h1>
+    <p>Informasi dasar KB Khalifah Sekolah Montessori.</p>
   </div>
-  <div class="section">
-    <div class="container">
-      <div class="info-grid">
-        <div class="info-row"><small>Nama Sekolah</small><strong>KB Khalifah Sekolah Montessori (KSM)</strong></div>
-        <div class="info-row"><small>NPSN</small><strong>70048791</strong></div>
-        <div class="info-row"><small>Status Sekolah</small><strong>Swasta</strong></div>
-        <div class="info-row"><small>Tahun Berdiri</small><strong>2019</strong></div>
-        <div class="info-row"><small>Izin Operasional</small><strong>2024</strong></div>
-        <div class="info-row"><small>Wilayah</small><strong>Jonggol, Kabupaten Bogor, Jawa Barat</strong></div>
-        <div class="info-row"><small>Alamat</small><strong>Bukit Bougenville AI 28/56, Citra Indah City, Jalan Cileungsi–Jonggol KM 23,2, Singajaya, Jonggol, Jawa Barat 16830</strong></div>
-        <div class="info-row"><small>Filosofi Pembelajaran</small><strong>Montessori Islami</strong></div>
+
+  <section class="content">
+    <div class="container panel">
+      <div class="info">
+        <strong>Nama Sekolah</strong>
+        <span>KB Khalifah Sekolah Montessori (KSM)</span>
+      </div>
+      <div class="info">
+        <strong>NPSN</strong>
+        <span>70048791</span>
+      </div>
+      <div class="info">
+        <strong>Status</strong>
+        <span>Swasta</span>
+      </div>
+      <div class="info">
+        <strong>Tahun Berdiri</strong>
+        <span>2019</span>
+      </div>
+      <div class="info">
+        <strong>Izin Operasional</strong>
+        <span>2024 — Dinas Pendidikan</span>
+      </div>
+      <div class="info">
+        <strong>Pembina Yayasan</strong>
+        <span>Prof. Ir. Samsul Kamal, MSc., Ph.D.</span>
+      </div>
+      <div class="info">
+        <strong>Kepala Sekolah</strong>
+        <span>Febrina Ayu Scottiati, S.H., Dipl. Montessori</span>
+      </div>
+      <div class="info">
+        <strong>Alamat</strong>
+        <span>
+          Bukit Bougenville AI 28/56, Citra Indah City,
+          Jalan Cileungsi–Jonggol KM 23,2, Singajaya,
+          Jonggol, Jawa Barat 16830.
+        </span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <!-- ORGANISASI -->
-<section class="page" id="organisasi">
-  <div class="page-banner">
-    <span class="eyebrow">Pengelola Sekolah</span>
+<div class="page" id="organisasi">
+  <div class="banner">
+    <span class="eyebrow">TIM SEKOLAH</span>
     <h1>Organisasi Sekolah</h1>
-    <p>Informasi pengelola KB Khalifah Sekolah Montessori.</p>
+    <p>Tim yang mendukung kegiatan pendidikan KSM.</p>
   </div>
-  <div class="section">
+
+  <section class="content">
     <div class="container">
-      <div class="grid">
-        <article class="card org-card">
-          <div class="card-icon">🏫</div>
+      <div class="cards">
+        <article class="card">
+          <div class="icon">🏫</div>
           <h3>Pembina Yayasan</h3>
           <p>Prof. Ir. Samsul Kamal, MSc., Ph.D.</p>
         </article>
-        <article class="card org-card">
-          <div class="card-icon">🌿</div>
+
+        <article class="card">
+          <div class="icon">📚</div>
           <h3>Kepala Sekolah</h3>
           <p>Febrina Ayu Scottiati, S.H., Dipl. Montessori.</p>
         </article>
-        <article class="card org-card">
-          <div class="card-icon">🤝</div>
-          <h3>Guru &amp; Tenaga Kependidikan</h3>
-          <p>Tambahkan daftar nama guru dan tenaga kependidikan resmi di sini.</p>
+
+        <article class="card">
+          <div class="icon">🤝</div>
+          <h3>Tim Pendidik</h3>
+          <p>Mendampingi anak dalam kegiatan belajar dan perkembangan sehari-hari.</p>
         </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <!-- GALERI -->
-<section class="page" id="galeri">
-  <div class="page-banner">
-    <span class="eyebrow">Momen Sekolah</span>
-    <h1>Galeri KSM</h1>
-    <p>Ruang untuk menampilkan dokumentasi kegiatan belajar dan aktivitas sekolah.</p>
+<div class="page" id="galeri">
+  <div class="banner">
+    <span class="eyebrow">MOMEN KSM</span>
+    <h1>Galeri Sekolah</h1>
+    <p>Dokumentasi kegiatan dan suasana belajar di KSM.</p>
   </div>
-  <div class="section">
+
+  <section class="content">
     <div class="container">
-      <div class="gallery-grid">
-        <div class="gallery-item"><div><span>📷</span><strong>Foto Kegiatan 1</strong><br><small>Ganti dengan foto asli sekolah</small></div></div>
-        <div class="gallery-item"><div><span>📷</span><strong>Foto Kegiatan 2</strong><br><small>Ganti dengan foto asli sekolah</small></div></div>
-        <div class="gallery-item"><div><span>📷</span><strong>Foto Kegiatan 3</strong><br><small>Ganti dengan foto asli sekolah</small></div></div>
-        <div class="gallery-item"><div><span>📷</span><strong>Foto Kegiatan 4</strong><br><small>Ganti dengan foto asli sekolah</small></div></div>
-        <div class="gallery-item"><div><span>📷</span><strong>Foto Kegiatan 5</strong><br><small>Ganti dengan foto asli sekolah</small></div></div>
-        <div class="gallery-item"><div><span>📷</span><strong>Foto Kegiatan 6</strong><br><small>Ganti dengan foto asli sekolah</small></div></div>
+      <div class="cards">
+        <article class="card">
+          <div class="icon">🌿</div>
+          <h3>Eksplorasi Alam</h3>
+          <p>Dokumentasi kegiatan anak mengenal alam dan lingkungan.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🧸</div>
+          <h3>Aktivitas Bermain</h3>
+          <p>Dokumentasi aktivitas bermain dan pengalaman belajar.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🎨</div>
+          <h3>Kegiatan Kreatif</h3>
+          <p>Dokumentasi kegiatan seni, sensorik, dan motorik.</p>
+        </article>
       </div>
-      <p class="quote">Kotak-kotak di atas masih berupa placeholder, bukan foto dokumentasi asli KSM.</p>
+
+      <p style="margin-top:20px;color:var(--muted)">
+        Foto asli kegiatan sekolah dapat ditambahkan ke galeri ini.
+      </p>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- LAYANAN / PROGRAM PENDAFTARAN -->
-<section class="page" id="layanan">
-  <div class="hero">
-    <div class="leaf leaf-left"><template></template></div>
-    <div class="leaf leaf-right"><template></template></div>
-    <div class="container">
-      <span class="eyebrow">Layanan Pendidikan</span>
-      <h1>Program KB Khalifah<br><span style="color:var(--green)">Sekolah Montessori</span></h1>
-      <p>Kenali pilihan kelas yang tersedia untuk calon peserta didik KB Khalifah Sekolah Montessori.</p>
-      <div class="hero-actions">
-        <a class="btn" href="#program-list">Jelajahi Program ↓</a>
-        <button class="btn btn-outline" data-goto="kontak">Informasi Sekolah</button>
-      </div>
-    </div>
-    <div class="leaf leaf-bottom-left"><template></template></div>
-    <div class="leaf leaf-bottom-right"><template></template></div>
+<!-- LAYANAN -->
+<div class="page" id="layanan">
+  <div class="banner">
+    <span class="eyebrow">PROGRAM PENDIDIKAN</span>
+    <h1>Layanan Pendidikan</h1>
+    <p>Klik kartu program untuk membaca penjelasan selengkapnya.</p>
   </div>
 
-  <div class="section" id="program-list">
+  <section class="content">
     <div class="container">
-      <div class="section-heading">
-        <span class="eyebrow">Pilihan Kelas</span>
-        <h2>Temukan Program yang Sesuai</h2>
-        <p>Berikut daftar program sesuai informasi layanan yang diberikan sekolah.</p>
-      </div>
-
       <div class="program-grid">
-        <article class="program-card">
-          <div class="program-top">
-            <div><div class="symbol">👐</div><h3>Kelas Sensori</h3></div>
-          </div>
-          <div class="program-body">
-            <span class="age">2–3 tahun</span>
-            <p>Kelas Sensori untuk anak usia 2–3 tahun.</p>
-          </div>
-        </article>
 
-        <article class="program-card">
-          <div class="program-top">
-            <div><div class="symbol">🌱</div><h3>Kelompok Bermain</h3></div>
-          </div>
-          <div class="program-body">
-            <span class="age">3–4 tahun</span>
-            <p>Kelas Kelompok Bermain (KB) untuk anak usia 3–4 tahun.</p>
-          </div>
-        </article>
+        <button class="program" onclick="openProgram('sensori')">
+          <div class="icon">🖐️</div>
+          <h3>Kelas Sensori</h3>
+          <p>Pengalaman eksplorasi melalui aktivitas sensorik dan bermain.</p>
+          <span class="more">Lihat detail →</span>
+        </button>
 
-        <article class="program-card">
-          <div class="program-top">
-            <div><div class="symbol">🌼</div><h3>Kelompok A</h3></div>
-          </div>
-          <div class="program-body">
-            <span class="age">4–5 tahun</span>
-            <p>Kelas Kelompok A untuk anak usia 4–5 tahun.</p>
-          </div>
-        </article>
+        <button class="program" onclick="openProgram('kb')">
+          <div class="icon">🧸</div>
+          <h3>Kelompok Bermain (KB)</h3>
+          <p>Pengalaman awal belajar bersama melalui kegiatan bermain.</p>
+          <span class="more">Lihat detail →</span>
+        </button>
 
-        <article class="program-card">
-          <div class="program-top">
-            <div><div class="symbol">🌿</div><h3>Kelompok B</h3></div>
-          </div>
-          <div class="program-body">
-            <span class="age">5–6 tahun</span>
-            <p>Kelas Kelompok B untuk anak usia 5–6 tahun.</p>
-          </div>
-        </article>
+        <button class="program" onclick="openProgram('a')">
+          <div class="icon">🌱</div>
+          <h3>Kelompok A</h3>
+          <p>Kesempatan belajar dan berkembang melalui pengalaman sehari-hari.</p>
+          <span class="more">Lihat detail →</span>
+        </button>
 
-        <article class="program-card">
-          <div class="program-top">
-            <div><div class="symbol">📚</div><h3>Elementary (SD)</h3></div>
-          </div>
-          <div class="program-body">
-            <span class="age">Program SD</span>
-            <p>Program Elementary (SD). Informasi usia dan ketentuan dapat dikonfirmasi kepada sekolah.</p>
-          </div>
-        </article>
+        <button class="program" onclick="openProgram('b')">
+          <div class="icon">📚</div>
+          <h3>Kelompok B</h3>
+          <p>Kegiatan belajar untuk mendukung perkembangan anak.</p>
+          <span class="more">Lihat detail →</span>
+        </button>
+
+        <button class="program" onclick="openProgram('elementary')">
+          <div class="icon">🎓</div>
+          <h3>Elementary (SD)</h3>
+          <p>Informasi mengenai program Elementary.</p>
+          <span class="more">Lihat detail →</span>
+        </button>
+
       </div>
 
-      <div class="register-panel">
-        <div class="register-copy">
-          <h3>Ingin mendaftarkan putra/putri Anda?</h3>
-          <p>Hubungi pihak sekolah untuk mendapatkan informasi lebih lanjut mengenai pendaftaran, biaya, persyaratan, dan jadwal kunjungan.</p>
-        </div>
-        <button class="btn" data-goto="kontak">Hubungi Sekolah →</button>
-      </div>
-
-      <p class="quote">“Bersama kita tumbuh, menuju generasi yang berakhlak mulia dan berprestasi.”</p>
+      <p style="text-align:center;margin-top:25px;color:var(--muted);font-size:13px">
+        Usia penerimaan, jadwal, kegiatan resmi, dan biaya perlu dikonfirmasi kepada sekolah.
+      </p>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <!-- KONTAK -->
-<section class="page" id="kontak">
-  <div class="page-banner">
-    <div class="leaf leaf-left"><template></template></div>
-    <span class="eyebrow">Hubungi Kami</span>
-    <h1>Kontak KB Khalifah</h1>
-    <p>Silakan hubungi sekolah untuk informasi lebih lanjut mengenai program dan pendaftaran.</p>
+<div class="page" id="kontak">
+  <div class="banner">
+    <span class="eyebrow">HUBUNGI KAMI</span>
+    <h1>Kontak &amp; Biaya</h1>
+    <p>Informasi lokasi sekolah dan media sosial resmi.</p>
   </div>
-  <div class="section">
-    <div class="container">
-      <div class="contact-grid">
-        <article class="contact-card">
-          <div class="card-icon">📍</div>
-          <h3>Alamat Sekolah</h3>
-          <p>Bukit Bougenville AI 28/56, Citra Indah City, Jalan Cileungsi–Jonggol KM 23,2, Singajaya, Jonggol, Jawa Barat 16830.</p>
-          <a href="https://www.google.com/maps/search/?api=1&query=Bukit+Bougenville+AI+28%2F56+Citra+Indah+City+Jonggol" target="_blank" rel="noopener noreferrer">Cari alamat di Google Maps ↗</a>
-        </article>
-        <article class="contact-card">
-          <div class="card-icon">📱</div>
-          <h3>Media Sosial</h3>
-          <p>Ikuti informasi dan aktivitas sekolah melalui akun Instagram berikut.</p>
-          <p><a href="https://www.instagram.com/khalifahsekolah_montessori/" target="_blank" rel="noopener noreferrer">@khalifahsekolah_montessori ↗</a></p>
-          <p><a href="https://www.instagram.com/paud.khalifahmontessori/" target="_blank" rel="noopener noreferrer">@paud.khalifahmontessori ↗</a></p>
-        </article>
+
+  <section class="content">
+    <div class="container grid2">
+      <div class="panel">
+        <div class="icon">📍</div>
+        <h2>Lokasi Sekolah</h2>
+        <p>
+          Bukit Bougenville AI 28/56, Citra Indah City,
+          Jalan Cileungsi–Jonggol KM 23,2, Singajaya,
+          Jonggol, Jawa Barat 16830.
+        </p>
+        <a class="btn btn-primary"
+           href="https://www.google.com/maps/search/?api=1&query=Citra+Indah+City+Jonggol"
+           target="_blank" rel="noopener">
+          Buka Google Maps →
+        </a>
       </div>
-      <div class="panel" style="margin-top:22px;text-align:center">
-        <h3>Informasi Pendaftaran</h3>
-        <p>Untuk nomor telepon, WhatsApp, biaya, persyaratan, dan jadwal pendaftaran, silakan tambahkan informasi resmi sekolah sebelum halaman ini dipublikasikan.</p>
-        <button class="btn btn-outline" data-goto="layanan">Kembali ke Program</button>
+
+      <div class="panel">
+        <div class="icon">📱</div>
+        <h2>Instagram Resmi</h2>
+        <p>
+          <a class="contact-link"
+             href="https://www.instagram.com/khalifahsekolah_montessori/"
+             target="_blank" rel="noopener">
+            @khalifahsekolah_montessori ↗
+          </a>
+        </p>
+        <p>
+          <a class="contact-link"
+             href="https://www.instagram.com/paud.khalifahmontessori/"
+             target="_blank" rel="noopener">
+            @paud.khalifahmontessori ↗
+          </a>
+        </p>
+      </div>
+
+      <div class="panel" style="grid-column:1/-1">
+        <div class="icon">💬</div>
+        <h2>Informasi Pendaftaran &amp; Biaya</h2>
+        <p>
+          Hubungi sekolah melalui akun Instagram resmi untuk informasi
+          biaya pendidikan, jadwal kunjungan, usia penerimaan,
+          dan pendaftaran terbaru.
+        </p>
+        <p>
+          Nominal biaya tidak dicantumkan karena perlu dipastikan
+          sesuai daftar biaya resmi terbaru.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+
 </main>
 
+<!-- POPUP DETAIL LAYANAN -->
+<div class="modal" id="programModal" role="dialog"
+     aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <button class="close" onclick="closeProgram()" aria-label="Tutup">×</button>
+    <span class="eyebrow">LAYANAN PENDIDIKAN KSM</span>
+    <h2 id="modalTitle">Detail Program</h2>
+    <div id="modalBody"></div>
+    <button class="btn btn-primary" onclick="closeProgram()">
+      Kembali ke Layanan
+    </button>
+  </div>
+</div>
+
 <footer>
-  <div class="leaf leaf-left"><template></template></div>
   <div class="container">
-    <strong>KB Khalifah Sekolah Montessori</strong>
-    <p>Sekolah Rasa Rumah</p>
-    <p class="footer-note">Jonggol, Kabupaten Bogor, Jawa Barat</p>
-    <p class="footer-note">© <span id="year"></span> KB Khalifah Sekolah Montessori</p>
+    <div class="footer-grid">
+      <div>
+        <h3>KB Khalifah Sekolah Montessori</h3>
+        <p>Sekolah Rasa Rumah.</p>
+        <p>Belajar · Bermain · Bertumbuh.</p>
+      </div>
+
+      <div>
+        <h3>Navigasi</h3>
+        <p><a href="#" onclick="showPage('profil');return false;">Profil</a></p>
+        <p><a href="#" onclick="showPage('organisasi');return false;">Organisasi</a></p>
+        <p><a href="#" onclick="showPage('layanan');return false;">Layanan</a></p>
+        <p><a href="#" onclick="showPage('kontak');return false;">Kontak &amp; Biaya</a></p>
+      </div>
+
+      <div>
+        <h3>Kontak Kami</h3>
+        <p>Jonggol, Kabupaten Bogor, Jawa Barat.</p>
+        <p><a href="https://www.instagram.com/khalifahsekolah_montessori/" target="_blank" rel="noopener">Instagram KSM ↗</a></p>
+        <p><a href="https://www.instagram.com/paud.khalifahmontessori/" target="_blank" rel="noopener">Instagram PAUD ↗</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © <span id="year"></span> KB Khalifah Sekolah Montessori. Sekolah Rasa Rumah.
+    </div>
   </div>
 </footer>
 
 <script>
+/* NAVIGASI ANTARHALAMAN */
+
+const pageButtons = document.querySelectorAll("[data-page]");
 const pages = document.querySelectorAll(".page");
-const navButtons = document.querySelectorAll("[data-page]");
 const navLinks = document.getElementById("navLinks");
 const menuToggle = document.getElementById("menuToggle");
 
 function showPage(pageId) {
   const target = document.getElementById(pageId);
-  if (!target || !target.classList.contains("page")) return;
+  if (!target) return;
 
-  pages.forEach(page => page.classList.toggle("active", page.id === pageId));
-  navButtons.forEach(button => {
-    const active = button.dataset.page === pageId;
-    button.classList.toggle("active", active);
-    if (active) button.setAttribute("aria-current", "page");
-    else button.removeAttribute("aria-current");
+  pages.forEach(page => {
+    page.classList.toggle("active", page.id === pageId);
+  });
+
+  pageButtons.forEach(button => {
+    button.classList.toggle("active", button.dataset.page === pageId);
   });
 
   navLinks.classList.remove("open");
   menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.textContent = "☰";
-  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
-navButtons.forEach(button => {
-  button.addEventListener("click", () => showPage(button.dataset.page));
-});
-
-document.querySelectorAll("[data-goto]").forEach(button => {
-  button.addEventListener("click", () => showPage(button.dataset.goto));
+pageButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    showPage(button.dataset.page);
+  });
 });
 
 menuToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.textContent = isOpen ? "✕" : "☰";
+  const opened = navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(opened));
 });
 
-/* Isi dekorasi monstera dari template SVG */
-const monsteraMarkup = document.getElementById("monstera-template").innerHTML;
-document.querySelectorAll(".leaf").forEach(leaf => {
-  leaf.innerHTML = monsteraMarkup;
-});
+/* DATA PROGRAM LAYANAN */
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const programData = {
+  sensori: {
+    title: "🖐️ Kelas Sensori",
+    intro: "Kegiatan yang memberi kesempatan kepada anak untuk mengeksplorasi pengalaman sensorik melalui aktivitas bermain.",
+    points: [
+      "Mengenal lingkungan melalui pengalaman langsung.",
+      "Mendukung stimulasi sensorik dan koordinasi gerak.",
+      "Memberi pengalaman belajar yang menyenangkan."
+    ]
+  },
 
-/* Jika halaman dibuka dengan hash, pilih halaman terkait jika ada */
-window.addEventListener("load", () => {
-  const hash = window.location.hash.slice(1);
-  if (hash && document.getElementById(hash)?.classList.contains("page")) {
-    showPage(hash);
+  kb: {
+    title: "🧸 Kelompok Bermain (KB)",
+    intro: "Pengalaman belajar awal melalui bermain dan berinteraksi di lingkungan yang ramah anak.",
+    points: [
+      "Mengenal kegiatan belajar bersama.",
+      "Mengeksplorasi lingkungan sekitar.",
+      "Belajar melalui pengalaman bermain."
+    ]
+  },
+
+  a: {
+    title: "🌱 Kelompok A",
+    intro: "Kegiatan pendidikan anak usia dini yang memberi kesempatan untuk belajar dan mengembangkan keterampilan.",
+    points: [
+      "Mendukung rasa ingin tahu anak.",
+      "Mencoba aktivitas secara mandiri.",
+      "Mendukung perkembangan fisik, motorik, dan sensorik."
+    ]
+  },
+
+  b: {
+    title: "📚 Kelompok B",
+    intro: "Kegiatan belajar yang mendukung perkembangan anak melalui pengalaman dan eksplorasi.",
+    points: [
+      "Mencoba dan menyelesaikan aktivitas.",
+      "Mengeksplorasi lingkungan sekitar.",
+      "Menghargai proses perkembangan setiap anak."
+    ]
+  },
+
+  elementary: {
+    title: "🎓 Elementary (SD)",
+    intro: "Elementary (SD) tercantum sebagai salah satu layanan pada website ini. Rincian program resmi perlu dikonfirmasi kepada pihak sekolah.",
+    points: [
+      "Tanyakan ketersediaan jenjang.",
+      "Konfirmasikan kurikulum dan jadwal.",
+      "Hubungi sekolah untuk informasi pendaftaran."
+    ]
+  }
+};
+
+/* MEMBUKA DETAIL PROGRAM */
+
+function openProgram(programId) {
+  const program = programData[programId];
+  if (!program) return;
+
+  document.getElementById("modalTitle").textContent = program.title;
+
+  const body = document.getElementById("modalBody");
+  body.replaceChildren();
+
+  const intro = document.createElement("p");
+  intro.textContent = program.intro;
+  body.appendChild(intro);
+
+  const heading = document.createElement("h3");
+  heading.textContent = "Tentang Program";
+  body.appendChild(heading);
+
+  const list = document.createElement("ul");
+
+  program.points.forEach(point => {
+    const item = document.createElement("li");
+    item.textContent = point;
+    list.appendChild(item);
+  });
+
+  body.appendChild(list);
+
+  const note = document.createElement("p");
+  note.textContent =
+    "Informasi usia, jadwal, kegiatan resmi, dan biaya perlu dikonfirmasi kepada pihak sekolah.";
+  body.appendChild(note);
+
+  document.getElementById("programModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+
+  document.querySelector(".modal-content .close").focus();
+}
+
+/* MENUTUP DETAIL PROGRAM */
+
+function closeProgram() {
+  document.getElementById("programModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("programModal").addEventListener("click", event => {
+  if (event.target.id === "programModal") {
+    closeProgram();
   }
 });
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closeProgram();
+  }
+});
+
+/* TAHUN OTOMATIS */
+
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
