@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#315b3b">
+<meta name="description" content="Khalifah Sekolah Montessori (KSM), Sekolah Rasa Rumah di Jonggol, Jawa Barat.">
 <title>Khalifah Sekolah Montessori | Sekolah Rasa Rumah</title>
 
 <style>
@@ -40,7 +42,7 @@ header, main, footer {
   z-index: 1;
 }
 
-/* MONSTERA */
+/* MONSTERA DECORATION */
 .side-leaves {
   position: fixed;
   top: 145px;
@@ -52,6 +54,7 @@ header, main, footer {
 }
 
 .side-left { left: -35px; }
+
 .side-right {
   right: -35px;
   transform: scaleX(-1);
@@ -190,6 +193,7 @@ p { color: var(--muted); }
   margin: 12px auto;
 }
 
+/* HERO */
 .hero {
   min-height: 430px;
   display: grid;
@@ -211,14 +215,6 @@ p { color: var(--muted); }
 
 .hero-card h2 { font-size: 27px; }
 .leaf-icon { font-size: 48px; }
-
-.quote {
-  color: var(--green);
-  border-left: 3px solid var(--green);
-  padding-left: 15px;
-  font-weight: bold;
-  margin-top: 25px;
-}
 
 .buttons {
   display: flex;
@@ -253,6 +249,7 @@ p { color: var(--muted); }
 
 .btn-outline:hover { background: var(--light); }
 
+/* CARDS */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -310,7 +307,6 @@ p { color: var(--muted); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
-  align-items: stretch;
 }
 
 .profile-name {
@@ -338,6 +334,7 @@ p { color: var(--muted); }
 
 .list li { margin: 9px 0; }
 
+/* IDENTITY TABLE */
 .identity-table {
   width: 100%;
   border-collapse: collapse;
@@ -361,25 +358,58 @@ p { color: var(--muted); }
   font-weight: bold;
 }
 
-.quote-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-}
-
-.quote-column {
-  background: white;
+/* QUOTATION */
+.quote-feature {
+  text-align: center;
+  padding: 38px 28px;
+  margin: 25px 0;
+  background: linear-gradient(135deg, #edf5e9, #fffdf5);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 28px;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px #243d2808;
 }
 
-.quote-column p {
+.quote-feature .quote-mark {
+  font-size: 38px;
+  line-height: 1;
+  color: var(--green);
+}
+
+.quote-feature blockquote {
+  max-width: 850px;
+  margin: 20px auto;
+  color: var(--dark);
+  font-size: clamp(23px, 3.6vw, 35px);
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.quote-feature .author {
+  color: var(--green);
+  font-weight: bold;
+  margin: 15px 0 0;
+}
+
+.quote-feature .author-role {
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.quote-essay {
+  max-width: 850px;
+  margin: 28px auto 0;
+  text-align: left;
+  border-top: 1px solid var(--border);
+  padding-top: 22px;
+}
+
+.quote-essay p {
   color: var(--text);
-  margin: 0 0 22px;
+  font-size: 16px;
+  margin: 0 0 18px;
 }
 
-.quote-column p:last-child { margin-bottom: 0; }
+.quote-essay p:last-child { margin-bottom: 0; }
 
 .signature {
   margin-top: 30px;
@@ -389,6 +419,7 @@ p { color: var(--muted); }
 
 .signature strong { color: var(--dark); }
 
+/* CONTACT */
 .contact-card {
   display: flex;
   gap: 15px;
@@ -517,8 +548,7 @@ body.modal-open { overflow: hidden; }
   .hero-card { padding: 25px; }
 
   .grid,
-  .profile-grid,
-  .quote-layout {
+  .profile-grid {
     grid-template-columns: 1fr;
   }
 
@@ -570,11 +600,13 @@ body.modal-open { overflow: hidden; }
 <header>
   <div class="header-inner">
 
-    <a class="logo-yayasan" href="#beranda" onclick="showPage('beranda'); return false;" aria-label="Beranda">
+    <a class="logo-yayasan" href="#beranda"
+       onclick="showPage('beranda'); return false;" aria-label="Beranda">
       <img src="logo-yayasan.jpeg" alt="Logo Yayasan Samida Barokah Mulia">
     </a>
 
-    <button class="menu-toggle" onclick="toggleMenu()" aria-expanded="false" aria-controls="mainNav">
+    <button class="menu-toggle" onclick="toggleMenu()"
+            aria-expanded="false" aria-controls="mainNav">
       ☰ Menu
     </button>
 
@@ -589,7 +621,8 @@ body.modal-open { overflow: hidden; }
       <button data-page="kontak" onclick="showPage('kontak')">Kontak</button>
     </nav>
 
-    <a class="logo-sekolah" href="#beranda" onclick="showPage('beranda'); return false;" aria-label="Beranda sekolah">
+    <a class="logo-sekolah" href="#beranda"
+       onclick="showPage('beranda'); return false;" aria-label="Beranda sekolah">
       <img src="logo-khalifah.jpeg" alt="Logo Khalifah Sekolah Montessori">
     </a>
 
@@ -598,8 +631,9 @@ body.modal-open { overflow: hidden; }
 
 <main>
 
-<!-- BERANDA -->
+<!-- ================= BERANDA ================= -->
 <section id="beranda" class="page active">
+
   <div class="hero">
     <div>
       <div class="eyebrow">Pendidikan Anak Usia Dini</div>
@@ -630,19 +664,58 @@ body.modal-open { overflow: hidden; }
     </div>
   </div>
 
-  <!-- KUTIPAN PEMBINA YAYASAN -->
-  <div class="info-panel" style="text-align:center;padding:35px 25px;">
-    <div style="font-size:35px;margin-bottom:10px;">✦</div>
-    <div class="eyebrow">Pesan Inspirasi</div>
-    <h2 style="font-size:clamp(25px,4vw,38px);line-height:1.5;">
-      “Tiada Bintang Jatuh dari Langit, Kecuali Meraihnya”
-    </h2>
-    <p style="font-weight:bold;color:#315b3b;margin-top:20px;">
-      Prof. Ir. Samsul Kamal, MSc., Ph.D.
-    </p>
-    <p style="font-size:13px;margin-bottom:0;">
-      Pembina Yayasan Samida Barokah Mulia
-    </p>
+  <!-- PESAN PEMBINA YAYASAN -->
+  <div class="quote-feature">
+    <div class="quote-mark">✦</div>
+    <div class="eyebrow">Pesan dari Pembina Yayasan</div>
+    <h2>Pendidikan adalah Investasi Masa Depan</h2>
+
+    <div class="quote-essay">
+      <p>
+        “Pendidikan harus dijalani mulai dari saat lahir hingga liang
+        lahat. Pendidikan akan menaikkan derajat kehidupan manusia.”
+      </p>
+
+      <p>
+        “Dengan pendidikan, kemajuan suatu bangsa dapat ditentukan.
+        Pendidikan masa kecil menjadi penentu dalam langkah selanjutnya
+        dari seseorang.”
+      </p>
+
+      <p>
+        “Pra-sekolah adalah masa penting dalam perkembangan tumbuh
+        kembang seseorang.”
+      </p>
+
+      <p>
+        Sel otak dan pikiran pada masa itu harus diberi keleluasaan
+        dalam menjelajah fenomena serta aturan-aturan alam sebagai
+        dasar kehidupan di masa mendatang.
+      </p>
+
+      <p>
+        Metode Montessori merupakan salah satu cara untuk menginisiasi
+        dan menggugah kemampuan dasar anak dalam menggunakan sensor
+        fisik dan motoriknya.
+      </p>
+
+      <p>
+        Montessori yang didasari kaidah keimanan diharapkan memberikan
+        landasan kuat bagi anak untuk bertumbuh kembang.
+      </p>
+    </div>
+
+    <div style="margin-top:30px;padding-top:25px;border-top:1px solid var(--border);">
+      <div class="quote-mark">❝</div>
+      <blockquote>
+        “Tiada Bintang Jatuh dari Langit, Kecuali Meraihnya”
+      </blockquote>
+      <p class="author">Prof. Ir. Samsul Kamal, MSc., Ph.D.</p>
+      <p class="author-role">Pembina Yayasan Samida Barokah Mulia</p>
+      <button class="btn btn-primary" onclick="openModal('modalPembina')">
+        Profil Pembina Yayasan
+      </button>
+    </div>
   </div>
 
   <div class="section-heading">
@@ -681,7 +754,7 @@ body.modal-open { overflow: hidden; }
   </div>
 </section>
 
-<!-- PROFIL -->
+<!-- ================= PROFIL ================= -->
 <section id="profil" class="page">
   <div class="section-heading">
     <div class="eyebrow">Tentang Kami</div>
@@ -743,7 +816,7 @@ body.modal-open { overflow: hidden; }
   </div>
 </section>
 
-<!-- VISI MISI -->
+<!-- ================= VISI & MISI ================= -->
 <section id="visi" class="page">
   <div class="section-heading">
     <div class="eyebrow">Arah Pendidikan</div>
@@ -781,7 +854,7 @@ body.modal-open { overflow: hidden; }
   </div>
 </section>
 
-<!-- IDENTITAS -->
+<!-- ================= IDENTITAS ================= -->
 <section id="identitas" class="page">
   <div class="section-heading">
     <div class="eyebrow">Informasi Sekolah</div>
@@ -808,7 +881,7 @@ body.modal-open { overflow: hidden; }
   </table>
 </section>
 
-<!-- ORGANISASI -->
+<!-- ================= ORGANISASI ================= -->
 <section id="organisasi" class="page">
   <div class="section-heading">
     <div class="eyebrow">Pengelola Sekolah</div>
@@ -835,7 +908,7 @@ body.modal-open { overflow: hidden; }
   </div>
 </section>
 
-<!-- PROGRAM -->
+<!-- ================= PROGRAM ================= -->
 <section id="program" class="page">
   <div class="section-heading">
     <div class="eyebrow">Kegiatan Pendidikan</div>
@@ -890,7 +963,7 @@ body.modal-open { overflow: hidden; }
   </div>
 </section>
 
-<!-- SAMBUTAN -->
+<!-- ================= SAMBUTAN ================= -->
 <section id="sambutan" class="page">
   <div class="section-heading">
     <div class="eyebrow">Pesan Pendidikan</div>
@@ -903,7 +976,7 @@ body.modal-open { overflow: hidden; }
       <div class="card-icon">🏛️</div>
       <span class="profile-role">Pembina Yayasan</span>
       <h3>Prof. Ir. Samsul Kamal, MSc., Ph.D.</h3>
-      <p>Pendidikan anak usia dini dan pendekatan Montessori.</p>
+      <p>Pembina Yayasan Samida Barokah Mulia.</p>
       <button class="text-link" onclick="openModal('modalPembina')">Baca Profil ↗</button>
     </div>
 
@@ -917,7 +990,7 @@ body.modal-open { overflow: hidden; }
   </div>
 </section>
 
-<!-- KONTAK -->
+<!-- ================= KONTAK ================= -->
 <section id="kontak" class="page">
   <div class="section-heading">
     <div class="eyebrow">Hubungi Kami</div>
@@ -983,7 +1056,7 @@ body.modal-open { overflow: hidden; }
   <p>© <span id="year"></span> Khalifah Sekolah Montessori</p>
 </footer>
 
-<!-- POP-UP PROFIL PEMBINA -->
+<!-- ================= POP-UP PROFIL PEMBINA ================= -->
 <div class="modal" id="modalPembina" role="dialog" aria-modal="true"
      aria-labelledby="pembinaTitle"
      onclick="backdropClose(event,'modalPembina')">
@@ -1000,41 +1073,49 @@ body.modal-open { overflow: hidden; }
     <p><strong>Pembina Yayasan Samida Barokah Mulia</strong></p>
 
     <p>
-      Pembina Yayasan Samida Barokah Mulia yang menaungi
-      Khalifah Sekolah Montessori.
+      Pendidikan harus dijalani mulai dari saat lahir hingga liang lahat.
+      Pendidikan akan menaikkan derajat kehidupan manusia.
     </p>
 
     <p>
-      Sambutan beliau menekankan pentingnya pendidikan sejak usia dini,
-      karena masa prasekolah merupakan masa penting dalam perkembangan
-      anak. Anak perlu mendapat kesempatan untuk menjelajahi fenomena
-      dan aturan alam sebagai dasar kehidupan di masa mendatang.
+      Dengan pendidikan, kemajuan suatu bangsa dapat ditentukan.
+      Pendidikan masa kecil menjadi penentu dalam langkah selanjutnya
+      dari seseorang. Pra-sekolah adalah masa penting dalam perkembangan
+      tumbuh kembang seseorang.
     </p>
 
     <p>
-      Pendekatan Montessori yang didasari kaidah keimanan diharapkan
-      memberikan landasan kuat bagi anak untuk bertumbuh dan berkembang.
+      Sel otak dan pikiran pada masa itu harus diberi keleluasaan dalam
+      menjelajah fenomena serta aturan-aturan alam sebagai dasar kehidupan
+      di masa mendatang.
     </p>
 
-    <div class="info-panel">
-      <h3>Pesan Inspirasi</h3>
-      <p style="color:var(--green);font-weight:bold;font-size:20px;">
+    <p>
+      Metode Montessori adalah salah satu cara untuk menginisiasi dan
+      menggugah kemampuan dasar anak dalam menggunakan sensor fisik
+      dan motoriknya.
+    </p>
+
+    <p>
+      Montessori yang didasari kaidah keimanan akan memberikan landasan
+      kuat bagi anak untuk bertumbuh kembang.
+    </p>
+
+    <div class="info-panel" style="text-align:center;">
+      <div class="eyebrow">Pesan Inspirasi</div>
+      <h3 style="font-size:24px;">
         “Tiada Bintang Jatuh dari Langit, Kecuali Meraihnya”
+      </h3>
+      <p style="font-weight:bold;color:var(--green);">
+        Prof. Ir. Samsul Kamal, MSc., Ph.D.
       </p>
-      <p>Prof. Ir. Samsul Kamal, MSc., Ph.D.</p>
     </div>
-
-    <p>
-      Riwayat pendidikan, pengalaman profesional, dan informasi
-      biografi lainnya belum ditambahkan karena belum tersedia
-      informasi terverifikasi.
-    </p>
 
     <button class="btn btn-primary" onclick="closeModal('modalPembina')">Tutup Profil</button>
   </div>
 </div>
 
-<!-- POP-UP SAMBUTAN KEPALA SEKOLAH -->
+<!-- ================= POP-UP SAMBUTAN KEPALA SEKOLAH ================= -->
 <div class="modal" id="modalKepsek" role="dialog" aria-modal="true"
      aria-labelledby="kepsekTitle"
      onclick="backdropClose(event,'modalKepsek')">
@@ -1109,7 +1190,7 @@ body.modal-open { overflow: hidden; }
   </div>
 </div>
 
-<!-- POP-UP PROGRAM -->
+<!-- ================= POP-UP PROGRAM ================= -->
 <div class="modal" id="programModal" role="dialog" aria-modal="true"
      aria-labelledby="programTitle"
      onclick="backdropClose(event,'programModal')">
@@ -1121,6 +1202,7 @@ body.modal-open { overflow: hidden; }
       </div>
       <button class="close-modal" onclick="closeModal('programModal')" aria-label="Tutup">×</button>
     </div>
+
     <p id="programDescription"></p>
     <button class="btn btn-primary" onclick="closeModal('programModal')">Mengerti</button>
   </div>
